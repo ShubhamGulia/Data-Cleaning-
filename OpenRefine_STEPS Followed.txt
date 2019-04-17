@@ -36,6 +36,7 @@ Task 3 - spelling error, incosistencies(capitalization)
 -> ..... -> Merge Selected and recluster 
 # now there are no incosistencies, so we are going to merge it as list 
 -> Categories -> Join multivalued cells (|)-> ok 
+Atomization - diving mutli valued cells into mutiple cells 
 Back to same nows of rows with no row incositencies 
 -> categories value -> Edit cells -> transform -> value.split('|').unique().join('|')-> ok
 (expression)
