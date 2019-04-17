@@ -1,0 +1,45 @@
+Shubham Gulia
+
+Steps Followed - >
+
+
+Task 1 - Load the files and remove blank rows 
+
+- Download the Open refine and open it in the browser by running it from terminal.
+- Load the uncleaned file (that is phm-collection.tsv) as new project 
+- Use Facet and Filter ( that is beark down the data and filter it on specific filters)
+- Go to Record id - Facet - Numerical Facet. (says No numeric data)
+# So we need to convert string to interger 
+- Rocord ID->  Edit Cells-> Common Tranform -> To numbers 
+# notice on Graph there are two non numeric values 
+# blank values (remove)
+- GO to edit rows -> remove all matching value 
+
+Task 2 - Remove duplicate rows
+
+- To find the record id we need to sort the record id and then find the duplicates next to corresponding value 
+- Record id -> Sort ->number, smallest first -> ok
+#make the changes permanent 
+- Sort -> Reorder rows permanently
+# we use feature call blank cell (which leaves first and the rest duplicates to blank)
+- Record id- > Edit cells ->Blank down. 
+-> TO remove blank -> record id-> Facet -> Customize facet-> Facet by blank -> true -> edit rows -> remove all matching rows 
+
+Task 3 - spelling error, incosistencies(capitalization)
+-> Categories -> Edit cells-> Split mutli- valued cells -> Separator (|)
+# so we are splitting everthing, we will clean it and re merge the categories . 
+-> categories -> facet -> text facet (if required increase the limit to view the data)
+# at the bottom we see blank (how many categories are blank)
+# find similar categories, incosistencies in spelling 
+->Cluster-> key collision -> Ngram Size (4) .....# to handle large phrases
+-> unselect if something is not a proper match
+-> ..... -> Merge Selected and recluster 
+# now there are no incosistencies, so we are going to merge it as list 
+-> Categories -> Join multivalued cells (|)-> ok 
+Back to same nows of rows with no row incositencies 
+-> categories value -> Edit cells -> transform -> value.split('|').unique().join('|')-> ok
+(expression)
+
+Task 4 - Export the cleaned file 
+
+-> Export and select tab seperated value as the initial value. 
